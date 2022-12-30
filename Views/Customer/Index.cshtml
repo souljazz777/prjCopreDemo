@@ -1,0 +1,50 @@
+﻿@model IEnumerable<prjCoreDemo.Models.TCustomer>
+
+@{
+    ViewData["Title"] = "客戶列表";
+}
+
+<h1>客戶列表</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @* 透過displaynamefor呈現list資料表頭名稱 *@
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FAddress)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FAddress)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FId">編輯</a>
+                    <a asp-action="Delete" asp-route-id="@item.FId">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
